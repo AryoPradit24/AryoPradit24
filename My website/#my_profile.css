@@ -1,0 +1,44 @@
+#my_profile{
+    background-color:rgb(240, 211, 158);
+    }
+    .menu{
+     color:red;    
+    }
+    body{
+        /*
+     background-color:coral;
+     background-image: url("Pictures/17 Agustus background.JPG");
+     background-repeat:no-repeat ;
+     background-position:center ;
+     background-attachment:fixed;
+     */
+background: coral url("Pictures/17 Agustus background.JPG") no repeat center fixed;
+    }
+    
+    h1{
+    color:aqua;
+    text-align: center;
+    text-decoration:underline;
+    font-size: 20px
+    }
+
+    h2{
+    text-align: center;
+    text-transform: unset;
+     color:blanchedalmond;    
+    }
+    
+    #My_text{
+    text-align: justify;
+    text-indent: 34 px;
+    letter-spacing: normal;
+    word-spacing: 2px;
+    line-height: 20px;
+    }
+
+    #short_text{
+    text-align: left;
+    font-family: sans-serif;
+    font-weight: 300 px;
+    font-size: medium;
+    }
