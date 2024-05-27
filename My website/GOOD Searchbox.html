@@ -1,15 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<link rel="stylesheet" href="Searchbox.css">
-
-<title> GOOD Searchbox</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="Searchbox.css">
+    <title>GOOD Searchbox</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #eb4d4b;
+        }
+        .search-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #30336b;
+            height: 40px;
+            border-radius: 40px;
+            padding: 10px;
+        }
+        .search-box:hover > .search-txt {
+            width: 240px;
+            padding: 0.6px;
+        }
+        .search-txt {
+            border: none;
+            background: none;
+            outline: none;
+            float: left;
+            padding: 0;
+            color: white;
+            font-size: 16px;
+            transition: 0.4s;
+            line-height: 40px;
+            width: 0;
+        }
+        .search-btn {
+            float: right;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #22a6b3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
 </head>
-<div class="search-box">
-<input class="search-txt" type="text" name="" placeholder="type to search">    
-<a class="search-btn" href="#">
-</a>
-</div>
+<body>
+    <div class="search-box">
+        <input class="search-txt" type="text" name="" placeholder="type to search">
+        <a class="search-btn" href="#" onclick="searchFunction()">
+            <i class="fa fa-search"></i>
+        </a>
+    </div>
+    <script>
+        function searchFunction() {
+            var query = document.querySelector('.search-txt').value;
+            if (query) {
+                window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+            }
+        }
+    </script>
 </body>
 </html>
