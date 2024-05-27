@@ -1,436 +1,101 @@
-<html>
-  <head>
-    <body>
-      <!--table-->
-      <table border="1">
-        <caption> Reminder Sholat </caption>
-        <body><tr>
-          <th> Hari dalam seminggu </th>
-          <th>  jenis Sholat</th>
-          <th>  sudah diremind atau belum</th>
-          </tr>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Reminder</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>Reminder Sholat</caption>
+        <thead>
+            <tr>
+                <th>Hari dalam seminggu</th>
+                <th>Jenis Sholat</th>
+                <th>Sudah Diremind atau Belum</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Senin</td>
+                <td id="monday-prayers"></td>
+                <td><input type="checkbox" id="monday-check" /></td>
+            </tr>
+            <!-- Repeat for other days -->
+        </tbody>
+    </table>
 
-          <tr>
-            <td>Senin</td>
-            <td>subuh
+    <script>
+        // Your API key for prayer times, replace with your actual API key
+        const apiKey = 'YOUR_API_KEY';
+        const city = 'Jakarta'; // replace with the city of your choice
+        const country = 'Indonesia'; // replace with the country of your choice
 
-              <br>
-                 dhuha
-                 <br>
-                  Qabliyah Dzuhr
-                  <br>
-                  Dzuhr
-                  <br>
-                  Badiyah Dzuhr
-                  <br> 
-                  Qabliyah Ashar
-                  <br>
-                  Ashar
-                  <br> 
-                  Maghrib
-                  <br>
-                   Badiyah maghrib 
-                   <br>
-                   Qabliyah Isya
-                   <br> 
-                   Isya
-                   <br>
-                   Badiyah Isya
-                
-            </td>
-             <td><input type="checkbox" name=" user_check " value="0"> checked </td>
-          </tr>
+        function fetchPrayerTimes() {
+            fetch(`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}&method=2&key=${apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    const timings = data.data.timings;
+                    document.getElementById('monday-prayers').innerHTML = `
+                        Subuh: ${timings.Fajr}<br>
+                        Dhuha: ${timings.Sunrise}<br>
+                        Qabliyah Dzuhr: --:--<br>
+                        Dzuhr: ${timings.Dhuhr}<br>
+                        Badiyah Dzuhr: --:--<br>
+                        Qabliyah Ashar: --:--<br>
+                        Ashar: ${timings.Asr}<br>
+                        Maghrib: ${timings.Maghrib}<br>
+                        Badiyah Maghrib: --:--<br>
+                        Qabliyah Isya: --:--<br>
+                        Isya: ${timings.Isha}<br>
+                        Badiyah Isya: --:--
+                    `;
+                    // Repeat for other days
+                });
+        }
 
-          <tr>
-            <td> selasa</td>
-            <td>subuh
+        function setReminders() {
+            const reminderTimes = {
+                'Fajr': '05:00',
+                'Dhuhr': '12:00',
+                'Asr': '15:00',
+                'Maghrib': '18:00',
+                'Isha': '19:30'
+            };
 
-              <br>
-                 dhuha
-                 <br>
-                 Qabliyah Dzuhr
-                  <br>
-                  Dzuhr
-                  <br>
-                  Badiyah Dzuhr
-                  <br> 
-                  Qabliyah Ashar
-                  <br>
-                  Ashar
-                  <br> 
-                  Maghrib
-                  <br>
-                   Badiyah maghrib 
-                   <br>
-                   Qabliyah Isya
-                   <br> 
-                   Isya
-                   <br>
-                   Badiyah Isya
-            </td>
-             <td><input type="checkbox" name=" user_check " value="0"> checked </td>
-          </tr>
+            for (const [prayer, time] of Object.entries(reminderTimes)) {
+                const [hours, minutes] = time.split(':');
+                const now = new Date();
+                const reminder = new Date();
+                reminder.setHours(hours, minutes, 0, 0);
 
-          <tr>
-            <td> Rabu</td>
-            <td>subuh
+                if (reminder > now) {
+                    const timeout = reminder - now;
+                    setTimeout(() => {
+                        alert(`It's time for ${prayer} prayer!`);
+                    }, timeout);
+                }
+            }
+        }
 
-              <br>
-                 dhuha
-                 <br>
-                 Qabliyah Dzuhr
-                  <br>
-                  Dzuhr
-                  <br>
-                  Badiyah Dzuhr
-                  <br> 
-                  Qabliyah Ashar
-                  <br>
-                  Ashar
-                  <br> 
-                  Maghrib
-                  <br>
-                   Badiyah maghrib 
-                   <br>
-                   Qabliyah Isya
-                   <br> 
-                   Isya
-                   <br>
-                   Badiyah Isya
-            </td>
-             <td><input type="checkbox" name=" user_check " value="0"> checked </td>
-          </tr>
-          <tr>
-            <td> Kamis </td>
-            <td>subuh
-
-              <br>
-                 dhuha
-                 <br>
-                 Qabliyah Dzuhr
-                  <br>
-                  Dzuhr
-                  <br>
-                  Badiyah Dzuhr
-                  <br> 
-                  Qabliyah Ashar
-                  <br>
-                  Ashar
-                  <br> 
-                  Maghrib
-                  <br>
-                   Badiyah maghrib 
-                   <br>
-                   Qabliyah Isya
-                   <br> 
-                   Isya
-                   <br>
-                   Badiyah Isya
-            </td>
-             <td><input type="checkbox" name=" user_check " value="0"> checked </td>
-          </tr>
-          <tr>
-            <td> Jum'at</td>
-            <td>subuh
-
-              <br>
-                 dhuha
-                 <br>
-                 Qabliyah Dzuhr
-                  <br>
-                  Dzuhr
-                  <br>
-                  Badiyah Dzuhr
-                  <br> 
-                  Qabliyah Ashar
-                  <br>
-                  Ashar
-                  <br> 
-                  Maghrib
-                  <br>
-                   Badiyah maghrib 
-                   <br>
-                   Qabliyah Isya
-                   <br> 
-                   Isya
-                   <br>
-                   Badiyah Isya
-            </td>
-             <td><input type="checkbox" name=" user_check " value="0"> checked </td>
-          </tr>
-          <tr>
-            <td> Sabtu</td>
-            <td>subuh
-
-              <br>
-                 dhuha
-                 <br>
-                 Qabliyah Dzuhr
-                  <br>
-                  Dzuhr
-                  <br>
-                  Badiyah Dzuhr
-                  <br> 
-                  Qabliyah Ashar
-                  <br>
-                  Ashar
-                  <br> 
-                  Maghrib
-                  <br>
-                   Badiyah maghrib 
-                   <br>
-                   Qabliyah Isya
-                   <br> 
-                   Isya
-                   <br>
-                   Badiyah Isya
-            </td>
-             <td><input type="checkbox" name=" user_check " value="0"> checked </td>
-          </tr>
-
-          <tr>
-            <td> Minggu</td>
-            <td>subuh
-
-              <br>
-                 dhuha
-                 <br>
-                 Qabliyah Dzuhr
-                  <br>
-                  Dzuhr
-                  <br>
-                  Badiyah Dzuhr
-                  <br> 
-                  Qabliyah Ashar
-                  <br>
-                  Ashar
-                  <br> 
-                  Maghrib
-                  <br>
-                   Badiyah maghrib 
-                   <br>
-                   Qabliyah Isya
-                   <br> 
-                   Isya
-                   <br>
-                   Badiyah Isya
-            </td>
-             <td><input type="checkbox" name=" user_check " value="0"> checked </td>
-          </tr>
-          <tr>
-            <td>Senin</td>
-            <td>subuh
-
-              <br>
-                 dhuha
-                 <br>
-                  Qabliyah Dzuhr
-                  <br>
-                  Dzuhr
-                  <br>
-                  Badiyah Dzuhr
-                  <br> 
-                  Qabliyah Ashar
-                  <br>
-                  Ashar
-                  <br> 
-                  Maghrib
-                  <br>
-                   Badiyah maghrib 
-                   <br>
-                   Qabliyah Isya
-                   <br> 
-                   Isya
-                   <br>
-                   Badiyah Isya
-                
-            </td>
-             <td><input type="checkbox" name=" user_check " value="0"> checked </td>
-          </tr>
-
-          <tr>
-            <td> selasa</td>
-            <td>subuh
-
-              <br>
-                 dhuha
-                 <br>
-                 Qabliyah Dzuhr
-                  <br>
-                  Dzuhr
-                  <br>
-                  Badiyah Dzuhr
-                  <br> 
-                  Qabliyah Ashar
-                  <br>
-                  Ashar
-                  <br> 
-                  Maghrib
-                  <br>
-                   Badiyah maghrib 
-                   <br>
-                   Qabliyah Isya
-                   <br> 
-                   Isya
-                   <br>
-                   Badiyah Isya
-            </td>
-             <td><input type="checkbox" name=" user_check " value="0"> checked </td>
-          </tr>
-
-          <tr>
-            <td> Rabu</td>
-            <td>subuh
-
-              <br>
-                 dhuha
-                 <br>
-                 Qabliyah Dzuhr
-                  <br>
-                  Dzuhr
-                  <br>
-                  Badiyah Dzuhr
-                  <br> 
-                  Qabliyah Ashar
-                  <br>
-                  Ashar
-                  <br> 
-                  Maghrib
-                  <br>
-                   Badiyah maghrib 
-                   <br>
-                   Qabliyah Isya
-                   <br> 
-                   Isya
-                   <br>
-                   Badiyah Isya
-            </td>
-             <td><input type="checkbox" name=" user_check " value="0"> checked </td>
-          </tr>
-          <tr>
-            <td> Kamis </td>
-            <td>subuh
-
-              <br>
-                 dhuha
-                 <br>
-                 Qabliyah Dzuhr
-                  <br>
-                  Dzuhr
-                  <br>
-                  Badiyah Dzuhr
-                  <br> 
-                  Qabliyah Ashar
-                  <br>
-                  Ashar
-                  <br> 
-                  Maghrib
-                  <br>
-                   Badiyah maghrib 
-                   <br>
-                   Qabliyah Isya
-                   <br> 
-                   Isya
-                   <br>
-                   Badiyah Isya
-            </td>
-             <td><input type="checkbox" name=" user_check " value="0"> checked </td>
-          </tr>
-          <tr>
-            <td> Jum'at</td>
-            <td>subuh
-
-              <br>
-                 dhuha
-                 <br>
-                 Qabliyah Dzuhr
-                  <br>
-                  Dzuhr
-                  <br>
-                  Badiyah Dzuhr
-                  <br> 
-                  Qabliyah Ashar
-                  <br>
-                  Ashar
-                  <br> 
-                  Maghrib
-                  <br>
-                   Badiyah maghrib 
-                   <br>
-                   Qabliyah Isya
-                   <br> 
-                   Isya
-                   <br>
-                   Badiyah Isya
-            </td>
-             <td><input type="checkbox" name=" user_check " value="0"> checked </td>
-          </tr>
-          <tr>
-            <td> Sabtu</td>
-            <td>subuh
-
-              <br>
-                 dhuha
-                 <br>
-                 Qabliyah Dzuhr
-                  <br>
-                  Dzuhr
-                  <br>
-                  Badiyah Dzuhr
-                  <br> 
-                  Qabliyah Ashar
-                  <br>
-                  Ashar
-                  <br> 
-                  Maghrib
-                  <br>
-                   Badiyah maghrib 
-                   <br>
-                   Qabliyah Isya
-                   <br> 
-                   Isya
-                   <br>
-                   Badiyah Isya
-            </td>
-             <td><input type="checkbox" name=" user_check " value="0"> checked </td>
-          </tr>
-
-          <tr>
-            <td> Minggu</td>
-            <td>subuh
-
-              <br>
-                 dhuha
-                 <br>
-                 Qabliyah Dzuhr
-                  <br>
-                  Dzuhr
-                  <br>
-                  Badiyah Dzuhr
-                  <br> 
-                  Qabliyah Ashar
-                  <br>
-                  Ashar
-                  <br> 
-                  Maghrib
-                  <br>
-                   Badiyah maghrib 
-                   <br>
-                   Qabliyah Isya
-                   <br> 
-                   Isya
-                   <br>
-                   Badiyah Isya
-            </td>
-             <td><input type="checkbox" name=" user_check " value="0"> checked </td>
-          </tr>
-
-          
-  
-      </body>
-    </table> 
-      </div>
-      
-    </body>
-  </head>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchPrayerTimes();
+            setReminders();
+        });
+    </script>
+</body>
 </html>
