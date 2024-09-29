@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Diri</title>
+    <style>
+        /* CSS sederhana untuk mempercantik tampilan */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            width: 150px;
+            height: auto;
+            border-radius: 50%;
+        }
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .form-container {
+            margin: 20px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group input {
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Keterampilan</h2>
+    <div class="container">
+        <h>Profil Diri</h>
+        <!-- Bagian video -->
+    <h2>Video Perkenalan</h2>
+    <video width="320" height="240" controls> <!-- Tag video digunakan untuk menampilkan video pada halaman web -->
+        <source src="D:\AryoPradit24\TP WEBPRO\osu! 2024-05-08 08-40-37.mp4" type="video/mp4">
+        Browser Anda tidak mendukung tag video.
+    </video>
+    <!-- Bagian profil dengan gambar -->
+    <img src="D:\AryoPradit24\TP WEBPRO\WhatsApp Image 2023-01-25 at 23.22.35.jpeg" alt="Foto Profil"> <!-- Tag img digunakan untuk menampilkan gambar profil diri -->
+        <h1> Tentang saya </h1>
+        <p>Halo! Nama saya Aryo Pradipta. Saya adalah seorang Mahasiswa Telu Prodi Teknologi Informasi.</p>
+        
+    <table width=”80%” height=”50%” border="0">  <!--mendefinisikan tabel, karena lebih informatif disajikan dalam bentuk tabel-->
+        <tr> <!--mendefinisikan baris pada tabel-->
+            <th>Keterampilan</th> <!--mendefinisikan kolom judul suatu tabel-->
+            <th>Tingkat</th>
+        </tr>
+
+        <tr> <!--mendefinisikan baris pada tabel-->
+            <td>HTML/CSS</td> <!--mendefinisikan cell dala  tabel-->
+            <td>Mahir</td> <!--mendefinisikan cell dala  tabel-->
+        </tr>
+
+        <tr> <!--mendefinisikan baris pada tabel-->
+            <td>JavaScript</td> <!--mendefinisikan cell dala  tabel-->
+            <td>Menengah</td> <!--mendefinisikan cell dala  tabel-->
+        </tr>
+
+        <tr> <!--mendefinisikan baris pada tabel-->
+            <td>Python</td> <!--mendefinisikan cell dala  tabel-->
+            <td>Pemula</td> <!--mendefinisikan cell dala  tabel-->
+        </tr>
+    </table>
+    <br/>
+        
+
+        <!-- Bagian informasi kontak menggunakan tabel -->
+        <table> <!-- Tag table digunakan untuk menampilkan data dalam format tabel -->
+            <tr> <!--Tag tr berfungsi untuk membuat baris baru dalam tabel-->
+                <th>Jenis Kontak</th> <!-- Tag th digunakan untuk header kolom tabel -->
+                <th>Detail</th>
+            </tr>
+            <tr>
+                <td>Email</td> <!-- Tag td digunakan untuk menampilkan data pada tabel -->
+                <td>ramadhan.aryo23004@gmail.com</td>
+            </tr>
+            <tr>
+                <td>Telepon</td>
+                <td>+62 123 456 789</td>
+            </tr>
+        </table>
+
+        <!-- Bagian form kontak -->
+        <div class="form-container">
+            <h2>Kontak Saya</h2>
+            
+            <form> <!-- Tag form digunakan untuk membuat formulir input dari pengguna Form digunakan untuk mengumpulkan data pengguna -->
+                <div class="form-group">
+                    <label for="name">Nama:</label>
+                    <input type="text" id="name" name="name" placeholder="Masukkan nama Anda">  <!-- Tag input digunakan untuk memasukkan data dari pengguna -->
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Masukkan email Anda">
+                </div>
+                <div class="form-group">
+                    <label for="message">Pesan:</label>
+                    <input type="text" id="message" name="message" placeholder="Masukkan pesan Anda">
+                </div>
+                <button type="submit">Kirim</button> <!-- Tag button digunakan untuk mengirim data pada form -->
+            </form>
+        </div>
+
+        <!-- Bagian link eksternal -->
+        <h2>Media Sosial</h2>
+        <p>
+            Ikuti saya di
+            <a href="https://github.com/AryoPradit24" target="_blank">Github</a>  <!-- Tag a digunakan untuk membuat hyperlink ke halaman lain atau URL lain -->
+            dan
+            <a href="https://x.com/scraper21track" target="_blank">Twitter</a>.
+        </p>
+    </div>
+</body>
+</html>
